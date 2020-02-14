@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="~{layouts/master::head('BERRYKITCHEN')}" />
+</head>
+<body>
+	<th:block th:replace="~{layouts/master::header}" />
+
+
+
+	<div class="container">
+		<br />
+		<div class="row">
+			<div class=" col-8 offset-md-2">
+
+				<div class="card" style="borde-color: #004085" th:if="${entree}">
+					<div class="card-header bg-primary text-white"
+						style="border-color: #004085">
+						<strong class="card-title">Update Entree</strong>
+					</div>
+
+					<div class="card-body">
+						<form th:action="@{/entrees}" th:method="PUT"
+							th:object="${entree}" enctype="multipart/form-data"
+							class="form-horizontal">
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="email-input" class=" form-control-label">Name</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input type="text" id="email-input" name="name"
+										th:value="${entree.name}" placeholder="Entree's name"
+										class="form-control" />
+								</div>
+							</div>
+
+							<div class="row form-group mb-20">
+								<div class="col col-md-3">
+									<label for="email-input" class=" form-control-label">Price</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input type="text" id="email-input" name="price"
+										th:value="${entree.price}" placeholder="Entree's price"
+										class="form-control" />
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="email-input" class=" form-control-label">Section</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select class="form-control" id="exampleFormControlSelect2"
+										name="section">
+										<option value="Weekly special"
+											th:selected="(${entree.section} == 'Weekly special')">weekly
+											special</option>
+										<option value="Lunch" th:selected="(${entree.section} == 'Lunsh')">lunch</option>
+										<option value="Dinner" th:selected="(${entree.section} == 'Dinner')">Dinner</option>
+										<option value="Breakfast"
+											th:selected="(${entree.section} == 'Breakfast')">Breakfast</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col col-md-4">
+									<label for="email-input" class=" form-control-label">Status</label>
+								</div>
+								<div class="form-check form-check-inline col-md-2">
+									<input class="form-check-input" type="radio" name="status"
+										id="inlineRadio1" value="new" checked/> <label
+										class="form-check-label" for="inlineRadio1">New</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="status" th:checked="(${entree.status} == '')" 									id="inlineRadio2" value="" /> <label class="form-check-label"
+										for="inlineRadio2">Old</label>
+								</div>
+							</div>
+
+							<div class="row form-group mb-20">
+								<div class="col col-md-3">
+									<label for="email-input" class=" form-control-label">Items</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input type="text" id="email-input" name="allItems"
+										placeholder="Item1, item2, item3 ..." th:value="${items}"
+										class="form-control" />
+								</div>
+							</div>
+
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="email-input" class=" form-control-label">Picture
+										:</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input type="file" class="form-control-file"
+										id="exampleFormControlFile1" name="picture"
+										th:value="${entree.img}" />
+								</div>
+							</div>
+
+							<div>
+								<input type="hidden" th:value="${entree.id}" name="id" /> <input
+									type="hidden" th:value="${entree.img}" name="img" /> <input
+									type="submit" value="Valider"
+									class="btn btn-lg btn-primary float-right" />
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block th:replace="~{layouts/master::footer}" />
+	<th:block th:include="~{layouts/master::js}" />
+</body>
+</html>

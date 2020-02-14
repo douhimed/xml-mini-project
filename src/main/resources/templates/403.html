@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<th:block th:include="~{layouts/master::head('DOUHI\'S KITCHEN')}" />
+</head>
+<body>
+	<th:block th:replace="~{layouts/master::header}" />
+
+
+	<main role="main" class="container">
+      <div class="jumbotrom alert alert-danger" role="alert">
+        <h1 class="alert-heading" >Our apologies.</h1>
+        <hr>
+        <p class="lead">This page stepped out for a quick ride.</p>
+        <hr>
+        <a class="btn btn-lg btn-primary" th:href="@{/}" role="button">Home</a>
+      </div>
+    </main>
+    
+    
+</body>
+</html>

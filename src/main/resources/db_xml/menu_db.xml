@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu>
+    <section name="Weekly special">
+        <entree id="E3" img="wild-mushroom-bucatini.jpg" name="Wild Mushroom Bucatini" price="11.55">            
+            <item>Mushroom</item>
+            <item>Mushroom</item>
+            <item>White Sources</item>
+        </entree>
+        <entree id="3609926c-ca67-4bd9-9cb0-d60b6c3b4365" img="lamb-beef-kofka-skewers.jpg" name="LambBeef Kofka Skewers" price="25.5" status="new">
+            <item>Butter</item>
+            <item>Wine</item>
+            <item>Lamb</item>
+        </entree>
+    </section>
+    <section name="Lunch">
+     <entree id="E1" img="imported-oysters-grill.jpg" name="Imported Oysters Grill" price="10.5">            
+            <item>Ginger</item>
+            <item>Veggie</item>
+            <item>Oysters</item>
+        </entree>
+    </section>
+    <section name="Dinner">
+        <entree id="e882560c-1301-4916-9ff9-152ec3a6c2c7" img="beef-barbecue.jpg" name="Beef barbecue" price="30.0" status="new">
+            <item>beef</item>
+            <item>potatos</item>
+            <item>lombok</item>
+        </entree>
+    </section>
+    <section name="Breakfast">
+    	 <entree id="b2" img="bowl-fruits.jpg" name="Bowl fruits" price="10.0" status="new">
+            <item>peach</item>
+            <item>raspberry</item>
+            <item>strawberry</item>
+        </entree>
+        <entree id="b3" img="french-toast.jpg" name="Frensh toast" price="8.0">
+            <item>white toast</item>
+            <item>fromage</item>
+        </entree>
+    </section>
+</menu>

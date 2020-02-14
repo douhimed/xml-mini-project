@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="head(title)">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="mql.org">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title th:text="${title}"></title>
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+<link th:href="@{/css/album.css}" rel="stylesheet">
+
+</head>
+<body>
+
+	<header th:fragment="header" id="header">
+		<div
+			class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+			<h5 class="my-0 mr-md-auto font-weight-normal">DOUHI'S KITCHEN</h5>
+			<nav class="my-2 my-md-0 mr-md-3">
+				<a class="p-2 text-dark" th:href="@{/}">Menu</a> 
+				<a sec:authorize="hasRole('ROLE_ADMIN')" class="p-2 text-dark" th:href="@{/entrees/new}">Add</a>
+			</nav>
+
+			<form class="form-inline my-2 my-lg-0 mr-sm-2" method="POST"
+				th:action="@{/search}">
+					<select name="section" class="form-control mr-sm-2">
+					<option value="">By section</option>
+					<option value="Weekly special" th:selected="(${keyWord} == 'Weekly special')">weekly special</option>
+					<option value="Lunch" th:selected="(${keyWord} == 'Lunsh')">Lunch</option>
+					<option value="Dinner" th:selected="(${keyWord} == 'Dinner')">Dinner</option>
+					<option value="Breakfast" th:selected="(${keyWord} == 'Breakfast')">Breakfast</option>
+				</select>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			<a class="btn btn-primary mr-sm-2" sec:authorize="!isAuthenticated()"
+				th:href="@{/login}">Login</a> <a class="btn btn-danger mr-sm-2"
+				sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+		</div>
+	</header>
+
+	<footer th:fragment="footer"> </footer>
+
+	<div th:fragment="js">
+		<script>
+			function fct(f) {
+				return confirm('Are you sure of deleting this entree ?')
+			}
+		</script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<th:block th:include="~{layouts/master::head('DOUHI\'S KITCHEN')}" />
+</head>
+<body>
+	<th:block th:replace="~{layouts/master::header}" />
+
+	<section class="container">
+		<div class="row">
+			<div th:each="entree : ${entrees}" class="col-md-4">
+				<div class="card mb-4 shadow-sm">
+
+					<img class="card-img-top" th:src="@{'/images/' + ${entree.img}}"
+						height="200" /> <img th:if="${entree.status == 'new'}"
+						th:src="@{/icons/new.png}" class="new" />
+					<div class="card-body">
+						<h6 class="card-title" th:text="${entree.name}"></h6>
+						<span th:each="item : ${entree.items}" th:text="${item + ', '}"></span>
+						<br /> <br />
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<a sec:authorize="hasRole('ROLE_ADMIN')"
+									th:href="@{'/entrees/' + ${entree.id}}" type="button"
+									class="btn btn-primary mr-2">Edit</a> <a
+									sec:authorize="hasRole('ROLE_ADMIN')"
+									th:href="@{'/entrees/delete/' + ${entree.id}}"
+									class="btn btn-danger" onclick="return(fct(this));">Delete</a>
+							</div>
+							<small class="text-muted" th:text="${entree.price + ' MAD'}"></small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<th:block th:replace="~{layouts/master::footer}" />
+	<th:block th:include="~{layouts/master::js}" />
+</body>
+</html>
